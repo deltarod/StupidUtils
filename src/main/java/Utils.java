@@ -38,7 +38,7 @@ public class Utils {
             sb.append(i);
             sb.append(": ");
             sb.append(util.getName());
-            if(i != 3) {
+            if(i != utilList.size()-1) {
                 sb.append("\n");
             }
         }

@@ -14,10 +14,16 @@ public class StandardErrorCalc implements IUtil{
         System.out.println("Population: ");
         double population = scanner.nextDouble();
         System.out.println("Proportion/Mean: ");
-        double prop = scanner.nextDouble();
+        double val = scanner.nextDouble();
+        double prop;
+        if(val<1){
+            prop = val;
+        }
+        else prop = val/population;
+
 
         //sqrt(p(1-p)/n)
-        double output = Math.sqrt((prop * (1 - prop) / population));
+        double output = standardError(population, prop);
         //central limit theory determinator
         boolean clt = ((population * prop > 10) && (population * (1 - prop) > 10));
         System.out.println("SE: " + output + " CLT: " + clt);
@@ -26,5 +32,9 @@ public class StandardErrorCalc implements IUtil{
 
     public String getName() {
         return "Standard Error Calculator";
+    }
+
+    public static double standardError(double population, double prop){
+        return Math.sqrt((prop * (1 - prop) / population));
     }
 }
